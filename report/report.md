@@ -18,7 +18,6 @@ Mergesort được cài đặt bằng Java theo nội dung : chia đôi mảng, 
 Trước khi đo thời gian, thuật toán được kiểm tra bằng src/TestMergeSort.java với 16 giá trị CUTOFF. Mỗi CUTOFF được thử trên mảng rỗng, mảng biên, mảng có nhiều số trùng, 1 430 mảng ngẫu nhiên và hai mảng 10 000 phần tử (đã sắp xếp, sắp ngược). Kết quả: 22 880 trường hợp, 0 trường hợp sai.
 
 ## 5. Phương pháp thí nghiệm
-## 5. Phương pháp thí nghiệm
 
 ### 5.1. Biến
 
@@ -60,7 +59,6 @@ Với mỗi cặp (CUTOFF, N), có 10 giá trị thời gian. Các thống kê �
 - **Trung bình (mean)** và **giá trị nhỏ nhất (min)**: dùng để kiểm tra chéo.
 - **Độ lệch chuẩn (stdev):** dùng để đánh giá mức dao động của phép đo.
 
-## 6. Kết quả
 ## 6. Kết quả
 
 ### 6.1. Thời gian trung vị theo CUTOFF
@@ -172,7 +170,7 @@ CUTOFF 7 của giáo trình cũ chậm hơn vùng tối ưu trên máy này, t�
 
 ## 10. Ghi chú về việc sử dụng AI
 
-Trong quá trình làm bài, em đã sử dụng một trợ lý AI (Claude) để:
+Trong quá trình làm bài, em đã sử dụng trợ lý AI (Claude, Gemini, Chat GPT,...) để:
 - Giải thích các khái niệm: CUTOFF, đệ quy, ý nghĩa của seed, nhiễu trong đo thời gian.
 - Gợi ý cấu trúc code và viết các script `DataGenerator`, `Experiment`, `TestMergeSort`.
 - Hướng dẫn cách dùng Google Sheets để tổng hợp số liệu.
