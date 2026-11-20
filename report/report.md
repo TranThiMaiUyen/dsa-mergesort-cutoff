@@ -2,20 +2,22 @@
 
 ## 1. Mục tiêu
 Tìm giá trị CUTOFF tối ưu cho thuật toán mergesort trên một máy cụ thể, khi CUTOFF là ngưỡng để chuyển từ mergesort sang insertion sort cho các đoạn mảng nhỏ. So sánh kết quả với hai mốc 7 và 10 trong giáo trình.
+
 ## 2. Môi trường thí nghiệm
-- Hệ điều hành: Windows (phiên bản: ghi theo Settings > System > About)
-- CPU: Intel Core i5-13420H, 8 nhân, 12 luồng logic, tốc độ cơ sở 2.10 GHz
+- Thiết bị: HP Laptop 15-fr0xxx
+- Hệ điều hành: Windows 11 Home Single Language, phiên bản 25H2 (OS build 26200.9974, 64-bit)
+- CPU: 13th Gen Intel Core i5-13420H, 8 nhân, 12 luồng logic, tốc độ cơ sở 2.10 GHz
 - Cache: L1 704 KB, L2 7.0 MB, L3 12.0 MB
-- RAM: 15.6 GB
+- RAM: 16.0 GB (15.6 GB khả dụng)
 - Java: OpenJDK 26.0.1 (JDK)
 - IDE: IntelliJ IDEA Community
-- Điều kiện khi đo: cắm sạc, đóng các ứng dụng khác, không thao tác trên máy trong lúc chạy
+- Điều kiện khi đo: cắm sạc, không thao tác trên máy trong lúc chạy (chi tiết mức tải hệ thống xem mục 5.4 và mục 8)
 
 ## 3. Cài đặt
-Mergesort được cài đặt bằng Java theo nội dung : chia đôi mảng, sắp xếp đệ quy hai nửa, trộn bằng mảng phụ aux. Khi đoạn có không quá CUTOFF phần tử, thuật toán dùng insertion sort. Mã nguồn nằm trong src/MergeSort.java.
+Mergesort được cài đặt bằng Java theo thuật toán chuẩn: chia đôi mảng, sắp xếp đệ quy hai nửa, trộn bằng mảng phụ `aux`. Khi đoạn có không quá CUTOFF phần tử, thuật toán dùng insertion sort. Mã nguồn nằm trong `src/MergeSort.java`.
 
 ## 4. Kiểm tra đúng đắn
-Trước khi đo thời gian, thuật toán được kiểm tra bằng src/TestMergeSort.java với 16 giá trị CUTOFF. Mỗi CUTOFF được thử trên mảng rỗng, mảng biên, mảng có nhiều số trùng, 1 430 mảng ngẫu nhiên và hai mảng 10 000 phần tử (đã sắp xếp, sắp ngược). Kết quả: 22 880 trường hợp, 0 trường hợp sai.
+Trước khi đo thời gian, thuật toán được kiểm tra bằng `src/TestMergeSort.java` với 16 giá trị CUTOFF. Mỗi CUTOFF được thử trên mảng rỗng, mảng biên, mảng có nhiều số trùng, 1 430 mảng ngẫu nhiên và hai mảng 10 000 phần tử (đã sắp xếp, sắp ngược). Kết quả: 22 880 trường hợp, 0 trường hợp sai.
 
 ## 5. Phương pháp thí nghiệm
 
@@ -63,7 +65,7 @@ Với mỗi cặp (CUTOFF, N), có 10 giá trị thời gian. Các thống kê �
 
 ### 6.1. Thời gian trung vị theo CUTOFF
 
-Bảng dưới trình bày một số CUTOFF tiêu biểu. Bảng đầy đủ 24 giá trị nằm trong phụ lục.
+Bảng dưới trình bày một số CUTOFF tiêu biểu. Bảng đầy đủ 24 giá trị xem tại mục 6.6 (file Excel và Google Sheets).
 
 | CUTOFF | N = 10 000 (ms) | N = 100 000 (ms) | N = 1 000 000 (ms) |
 |---|---|---|---|
@@ -109,19 +111,21 @@ Bảng dưới trình bày một số CUTOFF tiêu biểu. Bảng đầy đủ 2
 
 ### 6.5. Biểu đồ
 
-![Thời gian trung![img.png](img.png) bình theo CUTOFF, N = 10 000](chart_n10000.png)
+![Thời gian trung bình theo CUTOFF, N = 10 000](chart_n10000.png)
 
 ![Thời gian trung bình theo CUTOFF, N = 100 000](chart_n100000.png)
 
 ![Thời gian trung bình theo CUTOFF, N = 1 000 000](chart_n1000000.png)
 
 Các điểm đỏ là CUTOFF có thời gian trung bình thấp nhất trong từng cỡ N.
+
 ### 6.6. Bằng chứng
 
-- Bảng tính đầy đủ (Google Sheets, chỉ xem): [https://docs.google.com/spreadsheets/d/154AeXQNk-Ot4qPXXeRaWKJLEhS9W1uxZRg5d_f2iwgY/edit?usp=sharing]
+- Bảng tính đầy đủ (Google Sheets, chỉ xem): [Xem bảng tính tại đây](https://docs.google.com/spreadsheets/d/154AeXQNk-Ot4qPXXeRaWKJLEhS9W1uxZRg5d_f2iwgY/edit?usp=sharing)
 - Bản sao dự phòng: `results/phan-tich-cutoff.xlsx`
 - Dữ liệu đo gốc: `results/raw.csv`
 - Kết quả kiểm tra đúng đắn: `report/test_result.png`
+
 ## 7. Phân tích
 
 ### 7.1. Hai chi phí đối nghịch
@@ -164,13 +168,13 @@ Các hạn chế trên không làm mất giá trị của thí nghiệm, nhưng 
 
 ## 9. Kết luận
 
-Trên máy thí nghiệm của tôi (Intel Core i5-13420H, Java 26.0.1, Windows), mergesort đạt thời gian thấp nhất khi CUTOFF nằm trong khoảng 20 đến 30 với N = 10 000 và 100 000. Với N = 1 000 000, vùng thấp nhất nằm trong khoảng 10 đến 17. Trong các vùng này, chênh lệch giữa các CUTOFF nhỏ hơn độ dao động của phép đo, nên không xác định được một giá trị tối ưu duy nhất.
+Trên máy thí nghiệm của em (Intel Core i5-13420H, Java 26.0.1, Windows), mergesort đạt thời gian thấp nhất khi CUTOFF nằm trong khoảng 20 đến 30 với N = 10 000 và 100 000. Với N = 1 000 000, vùng thấp nhất nằm trong khoảng 10 đến 17. Trong các vùng này, chênh lệch giữa các CUTOFF nhỏ hơn độ dao động của phép đo, nên không xác định được một giá trị tối ưu duy nhất.
 
 CUTOFF 7 của giáo trình cũ chậm hơn vùng tối ưu trên máy này, từ khoảng 18% đến 47% tùy cỡ mảng. Điều này cho thấy giá trị CUTOFF tốt nhất phụ thuộc vào máy và môi trường chạy, và nên được đo lại trên từng máy cụ thể trước khi áp dụng.
 
 ## 10. Ghi chú về việc sử dụng AI
 
-Trong quá trình làm bài, em đã sử dụng trợ lý AI (Claude, Gemini, Chat GPT,...) để:
+Trong quá trình làm bài, em đã sử dụng một trợ lý AI (Claude, Chat GPT, Gemini) để:
 - Giải thích các khái niệm: CUTOFF, đệ quy, ý nghĩa của seed, nhiễu trong đo thời gian.
 - Gợi ý cấu trúc code và viết các script `DataGenerator`, `Experiment`, `TestMergeSort`.
 - Hướng dẫn cách dùng Google Sheets để tổng hợp số liệu.
